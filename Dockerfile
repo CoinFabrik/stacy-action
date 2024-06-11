@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
 
 
 
-RUN git clone --recurse-submodules https://github.com/faculerena/stacy /opt/stacy
+RUN git clone --recurse-submodules https://github.com/coinfabrik/stacy /opt/stacy
 
 WORKDIR /opt/stacy/stacks_analyzer/tree-sitter-clarity
 RUN npm install tree-sitter-cli
@@ -23,4 +23,4 @@ RUN npx tree-sitter generate
 WORKDIR /opt/stacy
 
 ENV INPUT_TARGET="."
-ENTRYPOINT ["sh", "-c", "git config --global --add safe.directory /github/workspace && git submodule update --init --recursive && make action"]
+ENTRYPOINT ["sh", "-c", "git config --global --add safe.directory /github/workspace && git submodule update --init --recursive && stacy-analyzer $INPUT_TARGET"]
