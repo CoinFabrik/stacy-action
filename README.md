@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Stacy Analyzer
-        uses: ./
+        uses: coinfabrik/stacy-action@v0.0.1
         with:
           target: 'tests/'
       - uses: mshick/add-pr-comment@v2.8.2
